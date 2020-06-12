@@ -98,6 +98,7 @@ enum can_motor_event_e
     e_can_motor_start_homing_negative = 15,
     e_can_motor_reciprocating_pn      = 16, //reciprocating between positive and negative (positive first)
     e_can_motor_reset_fault = 17,   //recovery fault by control word
+    e_can_motor_digital_output = 18,
 
     e_can_motor_packet_event_num,
 };
@@ -127,6 +128,7 @@ enum imu_event_e
     e_imu_power_off = 0,
     e_imu_power_on  = 1,
     e_imu_power_query = 2,
+    e_imu_ins_task_start = 3,
     e_imu_packet_event_num,
 };
 
