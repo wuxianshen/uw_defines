@@ -265,6 +265,8 @@ enum telemetry_param_event_e
 {
     e_telemetry_start = 0,
     e_telemetry_stop  = 1,
+    e_telemetry_data  = 2,
+    e_telemetry_relay = 3,
     e_telemetry_param_event_num,
 };
 
