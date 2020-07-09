@@ -6,14 +6,23 @@
    File   : uw_telemetry_defines.h
    Author : tao.jing
    Date   : 2020/6/12
-   Brief  : 
+   Brief  : Telemetry frame from AUV to Deck
 **************************************************************************/
 
 #ifndef CCOM_SDK_UW_TELEMETRY_DEFINES_H
 #define CCOM_SDK_UW_TELEMETRY_DEFINES_H
 
-
 #pragma pack(1)
+
+//**********************/
+//**     Timestamp    **/
+//**********************/
+typedef struct uw_timestamp_s_t
+{
+    uint32_t host_utc_time;     // UTC time in IMX6, unit: s
+    uint32_t ins_utc_time;      // UTC time in INS module, unit: s
+    uint32_t internal_sec_time; // Internal time, INS module start time, unit: s
+}uw_timestamp_t;
 
 //**********************/
 //**    Relay State   **/
@@ -94,6 +103,16 @@ typedef struct uw_telemetry_vel_s_t
     int16_t up_vel;      // Unit: 0.1 m/s
 }uw_telemetry_vel_t;
 
+//*******************/
+//**   Vel State   **/
+//*******************/
+typedef struct uw_telemetry_ang_vel_s_t
+{
+    int16_t x_ang_vel;    //Unit: 0.1 degree / s
+    int16_t y_ang_vel;    //Unit: 0.1 degree / s
+    int16_t z_ang_vel;    //Unit: 0.1 degree / s
+}uw_telemetry_ang_vel_t;
+
 //******************/
 //**   Heaving    **/
 //******************/
@@ -109,12 +128,14 @@ typedef struct uw_telemetry_heave_s_t
 //************************************************/
 typedef struct uw_telemetry_frame_s_t
 {
+    uw_timestamp_t               timestamp;
     uw_telemetry_relay_state_t   relay_state;
     uw_telemetry_battery_state_t battery_state;
-    uw_telemetry_ins_state_t ins_state;
+    uw_telemetry_ins_state_t     ins_state;
     uw_telemetry_gps_t  gps_state;
     uw_telemetry_pose_t pose_state;
     uw_telemetry_vel_t  vel_state;
+    uw_telemetry_ang_vel_t ang_vel_state;
 }uw_telemetry_frame_t;
 
 #pragma pack()
